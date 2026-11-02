@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rick Barber - Barbier à Yaoundé | Rick Fashion 237</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Configuration Tailwind personnalisée -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'noir': '#0f0f0f',
+            'dore': '#facc15',
+            'gris': '#2a2a2a',
+            'whatsapp': '#25D366'
+          },
+          borderRadius: {
+            '2xl': '1rem',
+            '3xl': '1.5rem'
+          },
+          boxShadow: {
+            'soft': '0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2)',
+            'glow': '0 0 20px rgba(250, 204, 21, 0.3)'
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'pulse-slow': 'pulse 3s infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Scrollbar personnalisée pour les tags */
+    .scroll-tags::-webkit-scrollbar {
+      height: 4px;
+    }
+    .scroll-tags::-webkit-scrollbar-track {
+      background: #2a2a2a;
+      border-radius: 10px;
+    }
+    .scroll-tags::-webkit-scrollbar-thumb {
+      background: #facc15;
+      border-radius: 10px;
+    }
+    /* Transition douce pour les images */
+    .realisation-img {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .realisation-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.3);
+    }
+    /* Effet de brillance sur le bouton WhatsApp */
+    .btn-whatsapp {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-whatsapp::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn-whatsapp:hover::after {
+      left: 100%;
+    }
+    /* Hauteur de la sidebar sur mobile */
+    @media (max-width: 767px) {
+      .sidebar-mobile {
+        max-height: 40vh;
+        overflow-y: auto;
+      }
+    }
+  </style>
+</head>
+<body class="bg-noir text-white font-sans antialiased">
+
+  <!-- Conteneur principal flex : sidebar + contenu -->
+  <div class="flex flex-col md:flex-row min-h-screen">
+
+    <!-- ========== SIDEBAR (Desktop fixe 320px / Mobile en haut) ========== -->
+    <aside class="sidebar-mobile w-full md:w-[320px] md:fixed md:inset-y-0 md:left-0 bg-gris border-b md:border-b-0 md:border-r border-gray-800 p-6 flex flex-col items-center text-center space-y-4 z-10 animate-fade-in">
+      
+      <!-- Photo de profil ronde -->
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=600" 
+             alt="Rick Barber - Barbier à Yaoundé" 
+             class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-3 border-dore shadow-glow">
+        <span class="absolute bottom-1 right-1 bg-dore text-noir text-xs font-bold px-2 py-0.5 rounded-full">Pro</span>
+      </div>
+
+      <!-- Nom et sous-titre -->
+      <h1 class="text-2xl font-extrabold tracking-tight">Rick Barber</h1>
+      <p class="text-dore font-semibold text-sm uppercase tracking-widest">Rick Fashion 237</p>
+
+      <!-- Localisation -->
+      <p class="text-gray-400 text-sm flex items-center justify-center gap-2">
+        <i class="fas fa-map-marker-alt text-dore"></i> Yaoundé, Cameroun
+      </p>
+
+      <!-- Description -->
+      <p class="text-gray-300 text-sm leading-relaxed max-w-xs">
+        Barbier pro à Yaoundé. Coupes modernes, dégradés, barbe. 3 ans d'expérience.
+      </p>
+
+      <!-- Bouton WhatsApp -->
+      <a href="https://wa.me/237693149222" target="_blank" rel="noopener noreferrer"
+         class="btn-whatsapp w-full bg-whatsapp hover:bg-green-600 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-soft transition duration-300">
+        <i class="fab fa-whatsapp text-xl"></i> Réserver sur WhatsApp
+      </a>
+
+      <!-- Icône Facebook -->
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+         class="text-gray-400 hover:text-dore text-xl transition duration-300" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+
+      <!-- QR Code -->
+      <div class="bg-noir p-3 rounded-2xl shadow-soft">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rickbarber.vercel.app" 
+             alt="QR Code Rick Barber" 
+             class="w-24 h-24 mx-auto rounded-lg">
+        <p class="text-gray-500 text-xs mt-1">Scannez pour visiter</p>
+      </div>
+
+      <!-- Téléphone et horaires -->
+      <div class="text-sm text-gray-400 space-y-1">
+        <p class="flex items-center justify-center gap-2">
+          <i class="fas fa-phone-alt text-dore"></i> 
+          <a href="tel:+237693149222" class="hover:text-dore transition">+237 693 149 222</a>
+        </p>
+        <p class="flex items-center justify-center gap-2">
+          <i class="fas fa-clock text-dore"></i> Lun - Sam : 9h - 20h
+        </p>
+      </div>
+
+    </aside>
+
+    <!-- ========== CONTENU PRINCIPAL (à droite de la sidebar) ========== -->
+    <main class="flex-1 md:ml-[320px] p-4 md:p-8 space-y-6 animate-slide-up">
+
+      <!-- Tags services horizontaux scrollables -->
+      <section class="w-full">
+        <div class="flex gap-2 overflow-x-auto scroll-tags pb-2 whitespace-nowrap">
+          <span class="bg-gris text-white px-4 py-2 rounded-2xl text-sm font-medium shadow-soft border border-gray-700 flex items-center gap-2">
+            <i class="fas fa-cut text-dore"></i> Coupe Homme 2000F
+          </span>
+          <span class="bg-gris text-white px-4 py-2 rounded-2xl text-sm font-medium shadow-soft border border-gray-700 flex items-center gap-2">
+            <i class="fas fa-bolt text-dore"></i> Dégradé Américain 3000F
+          </span>
+          <span class="bg-gris text-white px-4 py-2 rounded-2xl text-sm font-medium shadow-soft border border-gray-700 flex items-center gap-2">
+            <i class="fas fa-beard text-dore"></i> Barbe 2500F
+          </span>
+          <span class="bg-gris text-white px-4 py-2 rounded-2xl text-sm font-medium shadow-soft border border-gray-700 flex items-center gap-2">
+            <i class="fas fa-child text-dore"></i> Enfant 1500F
+          </span>
+        </div>
+      </section>
+
+      <!-- Titre principal -->
+      <h2 class="text-2xl md:text-3xl font-extrabold text-white flex items-center gap-3">
+        <span class="w-2 h-8 bg-dore rounded-full"></span>
+        Mes Réalisations
+      </h2>
+
+      <!-- Grille de 6 photos (2 colonnes mobile, 3 desktop) -->
+      <section class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        
+        <div class="realisation-img rounded-2xl overflow-hidden shadow-soft border border-gray-800">
+          <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=600" 
+               alt="Dégradé américain" class="w-full h-40 md:h-56 object-cover">
+        </div>
+
+        <div class="realisation-img rounded-2xl overflow-hidden shadow-soft border border-gray-800">
+          <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=600" 
+               alt="Coupe homme moderne" class="w-full h-40 md:h-56 object-cover">
+        </div>
+
+        <div class="realisation-img rounded-2xl overflow-hidden shadow-soft border border-gray-800">
+          <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=600" 
+               alt="Ambiance barbershop" class="w-full h-40 md:h-56 object-cover">
+        </div>
+
+        <div class="realisation-img rounded-2xl overflow-hidden shadow-soft border border-gray-800">
+          <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=600" 
+               alt="Taille de barbe" class="w-full h-40 md:h-56 object-cover">
+        </div>
+
+        <div class="realisation-img rounded-2xl overflow-hidden shadow-soft border border-gray-800">
+          <img src="https://images.unsplash.com/photo-1593702288056-7927b442d0fa?q=80&w=600" 
+               alt="Coupe enfant" class="w-full h-40 md:h-56 object-cover">
+        </div>
+
+        <div class="realisation-img rounded-2xl overflow-hidden shadow-soft border border-gray-800">
+          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=600" 
+               alt="Style homme noir" class="w-full h-40 md:h-56 object-cover">
+        </div>
+
+      </section>
+
+      <!-- Section CTA jaune -->
+      <section class="bg-dore text-noir rounded-3xl p-6 md:p-8 text-center shadow-glow animate-pulse-slow">
+        <h3 class="text-xl md:text-2xl font-extrabold mb-2">Besoin d'une coupe aujourd'hui ?</h3>
+        <p class="text-noir/80 mb-4 text-sm md:text-base">Réserve ton créneau en un clic, on s'occupe du reste.</p>
+        <a href="https://wa.me/237693149222" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 bg-noir text-dore font-bold py-3 px-6 rounded-2xl hover:bg-gray-900 transition duration-300 shadow-soft">
+          <i class="fab fa-whatsapp text-xl"></i> Réserver sur WhatsApp
+        </a>
+      </section>
+
+      <!-- Footer -->
+      <footer class="text-center text-gray-600 text-xs pt-6 border-t border-gray-800">
+        Conçu par <span class="text-dore font-semibold">Portfolio Online Pro</span>
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
